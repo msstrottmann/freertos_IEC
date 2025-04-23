@@ -61,15 +61,15 @@ Clone the repo and add the `freertos` folder into your ESP-IDF project’s `comp
 
 ## Usage 
 
-void app_main(void) {
+  void app_main(void) {
 
-    TaskHandle_t taskHandle;
-
-    xTaskCreate(vTaskA, "TaskA", 2048, NULL, 5, &taskHandle);
-    safety_register_task(taskHandle);
-
-    xTaskCreate(vTaskB, "TaskB", 2048, NULL, 5, &taskHandle);
-    safety_register_task(taskHandle);
-
-    xTaskCreate(vSafetyMonitorTask, "Safety", 2048, NULL, 10, NULL);
-}
+      TaskHandle_t taskHandle;
+  
+      xTaskCreate(vTaskA, "TaskA", 2048, NULL, 5, &taskHandle);
+      safety_register_task(taskHandle);
+  
+      xTaskCreate(vTaskB, "TaskB", 2048, NULL, 5, &taskHandle);
+      safety_register_task(taskHandle);
+  
+      xTaskCreate(vSafetyMonitorTask, "Safety", 2048, NULL, 10, NULL);
+  }
