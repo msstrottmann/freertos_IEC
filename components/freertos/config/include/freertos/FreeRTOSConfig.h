@@ -150,13 +150,7 @@
 #else /* CONFIG_FREERTOS_USE_TICK_HOOK */
     #define configUSE_TICK_HOOK               0
 #endif /* CONFIG_FREERTOS_USE_TICK_HOOK */
-#if CONFIG_FREERTOS_CHECK_STACKOVERFLOW_NONE
-    #define configCHECK_FOR_STACK_OVERFLOW    0
-#elif CONFIG_FREERTOS_CHECK_STACKOVERFLOW_PTRVAL
-    #define configCHECK_FOR_STACK_OVERFLOW    1
-#elif CONFIG_FREERTOS_CHECK_STACKOVERFLOW_CANARY
-    #define configCHECK_FOR_STACK_OVERFLOW    2
-#endif /* CONFIG_FREERTOS_CHECK_STACKOVERFLOW_NONE */
+#define configCHECK_FOR_STACK_OVERFLOW    2                 /* FORCE CHECK FOR STACK OVERFLOW */
 #define configRECORD_STACK_HIGH_ADDRESS       1             /* This must be set as the port requires TCB.pxEndOfStack */
 
 /* ------------------- Run-time Stats ---------------------- */
