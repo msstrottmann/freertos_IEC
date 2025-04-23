@@ -98,7 +98,8 @@ endif()
 list(APPEND srcs
     "esp_additions/freertos_compatibility.c"
     "esp_additions/idf_additions_event_groups.c"
-    "esp_additions/idf_additions.c")
+    "esp_additions/idf_additions.c"
+    "esp_additions/hooks/freertos_hooks.c")
 
 if(arch STREQUAL "linux")
     # Check if we need to address the FreeRTOS EINTR coexistence with linux system calls if we're building without
