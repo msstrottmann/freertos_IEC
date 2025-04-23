@@ -59,17 +59,17 @@ To integrate lightweight safety mechanisms into the FreeRTOS kernel for ESP32/ES
 
 Clone the repo and add the `freertos` folder into your ESP-IDF project’s `components/` directory.
 
-## Usage 
+## 🧪 Usage
 
-  void app_main(void) {
+```c
+void app_main(void) {
+    TaskHandle_t taskHandle;
 
-      TaskHandle_t taskHandle;
-  
-      xTaskCreate(vTaskA, "TaskA", 2048, NULL, 5, &taskHandle);
-      safety_register_task(taskHandle);
-  
-      xTaskCreate(vTaskB, "TaskB", 2048, NULL, 5, &taskHandle);
-      safety_register_task(taskHandle);
-  
-      xTaskCreate(vSafetyMonitorTask, "Safety", 2048, NULL, 10, NULL);
-  }
+    xTaskCreate(vTaskA, "TaskA", 2048, NULL, 5, &taskHandle);
+    safety_register_task(taskHandle);
+
+    xTaskCreate(vTaskB, "TaskB", 2048, NULL, 5, &taskHandle);
+    safety_register_task(taskHandle);
+
+    xTaskCreate(vSafetyMonitorTask, "Safety", 2048, NULL, 10, NULL);
+}
