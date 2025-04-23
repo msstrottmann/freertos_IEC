@@ -262,6 +262,10 @@
     #define configUSE_APPLICATION_TASK_TAG    1
 #endif // CONFIG_FREERTOS_USE_APPLICATION_TASK_TAG
 
+
+#define configUSE_TRACE_FACILITY        1
+#define traceTASK_SWITCHED_IN()         safety_trace_task_switched_in(pxCurrentTCB)
+
 /* -------------- List Data Integrity Checks --------------- */
 #define configUSE_LIST_DATA_INTEGRITY_CHECK_BYTES    CONFIG_FREERTOS_USE_LIST_DATA_INTEGRITY_CHECK_BYTES
 
