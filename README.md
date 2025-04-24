@@ -14,8 +14,11 @@ To integrate lightweight safety mechanisms into the FreeRTOS kernel for ESP32/ES
 
 ## ✅ Key Modifications from Original FreeRTOS
 
+- ⛑️ **All tasks forced to be treated as critical:**
+  - A task must be explicitly registered with the monitor system.
+
 - 🛡️ **Stack Overflow Protection** enabled:
-  - `configCHECK_FOR_STACK_OVERFLOW` set to `2` in `FreeRTOSConfig.h`.
+  - `configCHECK_FOR_STACK_OVERFLOW` forced to `2` for every task.
 
 - 🛡️ **Custom Scheduler Hook:**
   - Implemented `traceTASK_SWITCHED_IN()` to monitor task context switches and auto-report task activity.
@@ -23,30 +26,25 @@ To integrate lightweight safety mechanisms into the FreeRTOS kernel for ESP32/ES
 - 🛡️ **Safety Monitor Task:**
   - Added a new high-priority task that checks the liveness of all registered critical tasks and triggers a restart if any fail to respond.
 
-- 🛡️ **Safety Module Integration:**
-  - New file: `esp_additions/hooks/safety_hooks.c`
-  - Includes `safety_register_task()` and `vSafetyMonitorTask()`.
-
-- ⛑️ **All tasks treated as critical:**
-  - A task must be explicitly registered with the monitor system.
+- 🛡️ **Added xTaskCreateSafe Macro for xTaskCreate:**
+  - Improve automated task registration as critical task
+  - Avoid xTaskCreate to be used
+  - Disallow the usage of hooks inside xTaskCreateSafe (like jump or goto)
 
 ---
 
 ## 📈 Planned Features
 
-- 📌   **Critical Task Auto-Registration:**
-  - Wrap `xTaskCreate` in a macro to enforce critical registration by default.
-
 - 📌   **Configurable Recovery Policy:**
-  - Add support for fallback modes via E-FUSE instead of only restarting.
+  - Add support for secure Fallback flow with eFUSE instead only rebooting.
 
 - 📌   **Runtime Task Diagnostics:**
   - Report CPU load and uptime per task to console.
 
 - 📌   **Memory Safety Enhancements:**
-  - Integration with ESP32 hardware watchdog.
+  - Integration with ESP32 built-in watchdog.
   - Detection of memory corruption.
-  - automated checks for MISRA-C compliance
+  - Usage of MISRA-C static analysis tool.
 
 -------------------------------------------------------------------------------------------------
 
