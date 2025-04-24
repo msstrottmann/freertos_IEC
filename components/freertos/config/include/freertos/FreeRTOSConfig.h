@@ -265,6 +265,10 @@
 
 #define configUSE_TRACE_FACILITY        1
 #define traceTASK_SWITCHED_IN()         safety_trace_task_switched_in(pxCurrentTCB)
+#define configUSE_TRACE_FACILITY 1
+#define configENABLE_TRACE_HOOKS 1
+#define traceTASK_SWITCHED_IN() safety_trace_task_switched_in(xTaskGetCurrentTaskHandle())
+
 
 /* -------------- List Data Integrity Checks --------------- */
 #define configUSE_LIST_DATA_INTEGRITY_CHECK_BYTES    CONFIG_FREERTOS_USE_LIST_DATA_INTEGRITY_CHECK_BYTES
