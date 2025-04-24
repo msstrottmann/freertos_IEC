@@ -14,36 +14,36 @@ To integrate lightweight safety mechanisms into the FreeRTOS kernel for ESP32/ES
 
 ## ✅ Key Modifications from Original FreeRTOS
 
-- 📌 **Stack Overflow Protection** enabled:
+- 🛡️ **Stack Overflow Protection** enabled:
   - `configCHECK_FOR_STACK_OVERFLOW` set to `2` in `FreeRTOSConfig.h`.
 
-- 🧠 **Custom Scheduler Hook:**
+- 🛡️ **Custom Scheduler Hook:**
   - Implemented `traceTASK_SWITCHED_IN()` to monitor task context switches and auto-report task activity.
 
 - 🛡️ **Safety Monitor Task:**
   - Added a new high-priority task that checks the liveness of all registered critical tasks and triggers a restart if any fail to respond.
 
-- 📦 **Safety Module Integration:**
+- 🛡️ **Safety Module Integration:**
   - New file: `esp_additions/hooks/safety_hooks.c`
   - Includes `safety_register_task()` and `vSafetyMonitorTask()`.
 
-- 🏷️ **All tasks treated as critical:**
+- ⛑️ **All tasks treated as critical:**
   - A task must be explicitly registered with the monitor system.
 
 ---
 
 ## 📈 Planned Features
 
--    **Critical Task Auto-Registration:**
+- 📌   **Critical Task Auto-Registration:**
   - Wrap `xTaskCreate` in a macro to enforce critical registration by default.
 
--    **Configurable Recovery Policy:**
+- 📌   **Configurable Recovery Policy:**
   - Add support for fallback modes via E-FUSE instead of only restarting.
 
--    **Runtime Task Diagnostics:**
+- 📌   **Runtime Task Diagnostics:**
   - Report CPU load and uptime per task to console.
 
--    **Memory Safety Enhancements:**
+- 📌   **Memory Safety Enhancements:**
   - Integration with ESP32 hardware watchdog.
   - Detection of memory corruption.
   - automated checks for MISRA-C compliance
@@ -54,7 +54,7 @@ To integrate lightweight safety mechanisms into the FreeRTOS kernel for ESP32/ES
 
 Clone the repo and add the `freertos` folder into your ESP-IDF project’s `components/` directory.
 
-## 🧪 Usage
+## 🧰 Usage
 
 ```c
 void app_main(void) {
