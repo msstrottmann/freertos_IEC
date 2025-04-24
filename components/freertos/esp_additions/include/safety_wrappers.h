@@ -1,6 +1,10 @@
 #ifndef SAFETY_WRAPPERS_H
 #define SAFETY_WRAPPERS_H
 
+#if defined(goto) || defined(setjmp)
+    #error "xTaskCreateSafe does not allow jumps"
+#endif
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "safety_hooks.h"  
