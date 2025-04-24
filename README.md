@@ -40,15 +40,15 @@ To integrate lightweight safety mechanisms into the FreeRTOS kernel for ESP32/ES
 -    **Configurable Recovery Policy:**
   - Add support for fallback modes via E-FUSE instead of only restarting.
 
-- 📊 **Runtime Task Diagnostics:**
+-    **Runtime Task Diagnostics:**
   - Report CPU load and uptime per task to console.
 
-- ✅ **Memory Safety Enhancements:**
+-    **Memory Safety Enhancements:**
   - Integration with ESP32 hardware watchdog.
   - Detection of memory corruption.
   - automated checks for MISRA-C compliance
 
----
+-------------------------------------------------------------------------------------------------
 
 ## 🧰 Getting Started
 
