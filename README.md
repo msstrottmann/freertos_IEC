@@ -55,14 +55,31 @@ Clone the repo and add the `freertos` folder into your ESP-IDF project’s `comp
 ## 🧰 Usage
 
 ```c
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "safety_wrappers.h" // Asegura que las tareas se registren correctamente
+
+void vTaskA(void *pvParameters) {
+    // A TASK DECLARATIONS
+    while (1) {
+        // A TASK LOGIC
+    }
+}
+
+void vTaskB(void *pvParameters) {
+    // B TASK DECLARATIONS
+    while (1) {
+        // B TASK LOGIC
+    }
+}
+
 void app_main(void) {
     TaskHandle_t taskHandle;
 
-    xTaskCreate(vTaskA, "TaskA", 2048, NULL, 5, &taskHandle);
-    safety_register_task(taskHandle);
+    // DEFINE TASKS (LIMITED TO 31 TASKS)
+    xTaskCreateSafe(vTaskA, "TaskA", 2048, NULL, 5, &taskHandle);
+    xTaskCreateSafe(vTaskB, "TaskB", 2048, NULL, 5, &taskHandle);
 
-    xTaskCreate(vTaskB, "TaskB", 2048, NULL, 5, &taskHandle);
-    safety_register_task(taskHandle);
-
-    xTaskCreate(vSafetyMonitorTask, "Safety", 2048, NULL, 10, NULL);
+    // SAFETY MONITOR TASK 
+    xTaskCreate(vSafetyMonitorTask, "SafetyMonitor", 2048, NULL, 10, NULL);
 }
