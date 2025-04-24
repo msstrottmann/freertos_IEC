@@ -57,7 +57,7 @@ Clone the repo and add the `freertos` folder into your ESP-IDF project’s `comp
 ```c
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "safety_wrappers.h" // Asegura que las tareas se registren correctamente
+#include "safety_wrappers.h" //SHOULDNT BE NEEDED ANYMORE. INCLUDED IN freertos/FreeRTOS.h
 
 void vTaskA(void *pvParameters) {
     // A TASK DECLARATIONS
