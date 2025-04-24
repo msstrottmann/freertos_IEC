@@ -34,24 +34,19 @@ To integrate lightweight safety mechanisms into the FreeRTOS kernel for ESP32/ES
 
 ## 📈 Planned Features
 
-- 🔒 **Critical Task Auto-Registration:**
+-    **Critical Task Auto-Registration:**
   - Wrap `xTaskCreate` in a macro to enforce critical registration by default.
 
-- ⛑️ **Configurable Recovery Policy:**
-  - Add support for fallback modes instead of only restarting.
+-    **Configurable Recovery Policy:**
+  - Add support for fallback modes via E-FUSE instead of only restarting.
 
 - 📊 **Runtime Task Diagnostics:**
-  - Report CPU load and uptime per task to external systems (e.g., via UART or MQTT).
+  - Report CPU load and uptime per task to console.
 
 - ✅ **Memory Safety Enhancements:**
   - Integration with ESP32 hardware watchdog.
-  - Detection of memory corruption and illegal operations.
-
-- 📦 **CI & Static Analysis:**
-  - Add automated checks for MISRA-C compliance and coverage reports.
-
-- 🧪 **Unit Tests for Safety Logic:**
-  - Add self-tests for safety hooks and monitoring logic.
+  - Detection of memory corruption.
+  - automated checks for MISRA-C compliance
 
 ---
 
